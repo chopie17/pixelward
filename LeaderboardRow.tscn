@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1wdp7rfyjd1"]
+
+[ext_resource type="FontFile" uid="uid://dslbgvfmw6k5q" path="res://arts/baru/VT323-Regular.ttf" id="1_jm0v7"]
+
+[node name="LeaderboardRow" type="HBoxContainer"]
+scale = Vector2(0.525695, 1.2868)
+size_flags_horizontal = 3
+
+[node name="Rank" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jm0v7")
+text = "Rank"
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jm0v7")
+text = "Name"
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jm0v7")
+text = "Score"
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jm0v7")
+text = "Time"

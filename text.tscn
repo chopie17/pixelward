@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://gbns661lu6tv"]
+
+[ext_resource type="Texture2D" uid="uid://d3m466vqreuul" path="res://arts/baru/oke settings.png" id="1_1d40f"]
+[ext_resource type="FontFile" uid="uid://dslbgvfmw6k5q" path="res://arts/baru/VT323-Regular.ttf" id="1_g853r"]
+[ext_resource type="Script" uid="uid://c0l0k4xwf38xy" path="res://text.gd" id="1_oskos"]
+[ext_resource type="AudioStream" uid="uid://dre2jhdxhoenh" path="res://arts/baru/NotJamMusicPack_ogg/experimental-8-bit-sound-270302.mp3" id="4_gdqd4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oskos"]
+atlas = ExtResource("1_1d40f")
+region = Rect2(37.1859, 310.016, 697.601, 396.839)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdqd4"]
+atlas = ExtResource("1_1d40f")
+region = Rect2(36.0093, 324.773, 736.061, 341.893)
+
+[node name="Text" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oskos")
+
+[node name="oke" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 263.0
+offset_right = 1003.0
+offset_bottom = 688.0
+scale = Vector2(0.173546, 0.100152)
+texture_normal = SubResource("AtlasTexture_oskos")
+texture_hover = SubResource("AtlasTexture_gdqd4")
+ignore_texture_size = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 45.0
+offset_right = 682.0
+offset_bottom = 162.0
+scale = Vector2(0.802805, 2.08674)
+theme_override_fonts/font = ExtResource("1_g853r")
+text = "Kamu telah memasuki dunia fantasi yang dulunya damai.
+Kini, tempat ini dikuasai oleh makhluk misterius bernama ZipZipZip.
+Kegelapan menyebar, harapan mulai memudar.
+Tugasmu satu: bangkit, bertarung, dan selamatkan dunia ini dari cengkeraman ZipZipZip."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="bg" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -72.0
+offset_top = -11.0
+offset_right = -32.0
+offset_bottom = 29.0
+scale = Vector2(36.2662, 22.6293)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gdqd4")
+volume_db = 2.537
+
+[connection signal="pressed" from="oke" to="." method="_on_oke_pressed"]

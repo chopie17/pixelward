@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ddwn2pk3tqk1k"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 979.0
+offset_bottom = 674.0
+color = Color(0, 0, 0, 1)
+
+[node name="BGM" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 546.0
+offset_top = 143.0
+offset_right = 590.0
+offset_bottom = 167.0
+
+[node name="SFX" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 545.0
+offset_top = 165.0
+offset_right = 589.0
+offset_bottom = 189.0
+
+[node name="back" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

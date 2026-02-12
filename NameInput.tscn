@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmt5gy32xshf8"]
+
+[ext_resource type="Script" uid="uid://cyxnb3xsxvgbj" path="res://name_input.gd" id="1_6cvof"]
+[ext_resource type="FontFile" uid="uid://dslbgvfmw6k5q" path="res://arts/baru/VT323-Regular.ttf" id="2_84gfa"]
+[ext_resource type="Texture2D" uid="uid://d3m466vqreuul" path="res://arts/baru/oke settings.png" id="2_wgw13"]
+[ext_resource type="Texture2D" uid="uid://cibwsl5haah53" path="res://arts/characters/hehe.png" id="4_3qt2k"]
+[ext_resource type="AudioStream" uid="uid://dre2jhdxhoenh" path="res://arts/baru/NotJamMusicPack_ogg/experimental-8-bit-sound-270302.mp3" id="5_tegfk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84gfa"]
+atlas = ExtResource("2_wgw13")
+region = Rect2(37.1859, 310.016, 697.601, 396.839)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qt2k"]
+atlas = ExtResource("2_wgw13")
+region = Rect2(36.0093, 324.773, 736.061, 341.893)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tegfk"]
+atlas = ExtResource("4_3qt2k")
+region = Rect2(0, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxidf"]
+atlas = ExtResource("4_3qt2k")
+region = Rect2(150, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rpl6"]
+atlas = ExtResource("4_3qt2k")
+region = Rect2(100, 150, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mi8hp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tegfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxidf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rpl6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="NameInput" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6cvof")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -65.0
+offset_top = -33.0
+offset_right = -25.0
+offset_bottom = 7.0
+scale = Vector2(35.8884, 22.4316)
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="LineEdit" type="LineEdit" parent="Panel"]
+z_index = 2
+layout_mode = 0
+offset_left = 9.16731
+offset_top = 9.67385
+offset_right = 77.7298
+offset_bottom = 40.6739
+scale = Vector2(0.0777687, 0.0690603)
+
+[node name="Label" type="Label" parent="Panel"]
+z_index = 2
+layout_mode = 0
+offset_left = 9.16731
+offset_top = 7.53401
+offset_right = 182.167
+offset_bottom = 30.534
+scale = Vector2(0.0325957, 0.0878738)
+theme_override_fonts/font = ExtResource("2_84gfa")
+text = "masukan nama karakter anda"
+
+[node name="oke" type="TextureButton" parent="Panel"]
+layout_mode = 0
+offset_left = 17.1922
+offset_top = 15.3801
+offset_right = 733.192
+offset_bottom = 440.38
+scale = Vector2(0.00618257, 0.00760217)
+texture_normal = SubResource("AtlasTexture_84gfa")
+texture_hover = SubResource("AtlasTexture_3qt2k")
+ignore_texture_size = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel"]
+position = Vector2(4.48613, 11.8137)
+scale = Vector2(0.260082, 0.414916)
+sprite_frames = SubResource("SpriteFrames_mi8hp")
+animation = &"idle"
+frame_progress = 0.278458
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tegfk")
+volume_db = 2.031
+
+[connection signal="pressed" from="Panel/oke" to="." method="_on_oke_pressed"]

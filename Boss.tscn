@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://1p62srugiobm"]
+
+[ext_resource type="Script" uid="uid://blw2i1qexjxia" path="res://boss.gd" id="1_6xxrv"]
+[ext_resource type="Texture2D" uid="uid://cfpvq6ru26t8l" path="res://arts/characters/boss.png" id="2_4jvlg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paxtu"]
+atlas = ExtResource("2_4jvlg")
+region = Rect2(0, 0, 144, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohn0q"]
+atlas = ExtResource("2_4jvlg")
+region = Rect2(144, 0, 144, 160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1i15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paxtu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohn0q")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paxtu")
+}],
+"loop": true,
+"name": &"mati",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4jvlg"]
+radius = 20.0
+height = 61.0763
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jvlg"]
+radius = 9.28854
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_paxtu"]
+radius = 40.8044
+
+[node name="Boss" type="CharacterBody2D" groups=["boss", "enemy"]]
+z_index = 2
+script = ExtResource("1_6xxrv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(15, -31)
+scale = Vector2(0.6, 0.68)
+sprite_frames = SubResource("SpriteFrames_o1i15")
+animation = &"mati"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(7, -2)
+scale = Vector2(-0.831368, -0.283069)
+shape = SubResource("CapsuleShape2D_4jvlg")
+one_way_collision_margin = 13.5
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(10, -31)
+scale = Vector2(4.07563, 4.07159)
+shape = SubResource("CircleShape2D_4jvlg")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(10, -29)
+shape = SubResource("CircleShape2D_paxtu")
